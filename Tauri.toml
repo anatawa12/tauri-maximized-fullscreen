@@ -1,0 +1,22 @@
+[build]
+beforeDevCommand = ":"
+devPath = "web"
+distDir = "web"
+withGlobalTauri = true
+
+[package]
+productName = "tauri-link-appimage-test"
+
+[tauri.allowlist]
+window = { all = true }
+shell = { open = "^((https|unityhub)?://\\w+).+" }
+
+[[tauri.windows]]
+
+[tauri.bundle]
+active = true
+targets = ["appimage"]
+identifier = "com.anatawa12.tauri-link-appimage-test"
+icon = [
+    "icons/icon.png",
+]

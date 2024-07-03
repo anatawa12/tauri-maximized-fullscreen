@@ -1,0 +1,13 @@
+[package]
+name = "tauri-link-appimage-test"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+
+[build-dependencies]
+tauri-build = { version = "1.5.1", features = [ "config-toml" ] }
+
+[dependencies]
+tauri = { version = "1.6.7", features = [ "window-all", "shell-open", "config-toml" ] }
+[features]
+custom-protocol = [ "tauri/custom-protocol" ]
