@@ -6,8 +6,7 @@
 <div id="bottom"></div>
 
 <script type="module">
-	const windowApi = window.__TAURI__.window;
-	const thisWindow = windowApi.appWindow;
+	const eventApi = window.__TAURI__.event;
 
 	const logWindow = document.getElementById('logWindow');
 	const bottom = document.getElementById('bottom');
@@ -16,13 +15,7 @@
 		bottom.scrollIntoView();
 	}
 
-	await thisWindow.onResized(async ({ payload: size }) => {
-		log(`Window resized ${size.width}, ${size.height}`, size);
-
-		const maximized = await thisWindow.isMaximized();
-		const fullscreen = await thisWindow.isFullscreen();
-
-		log(`Maximized: ${maximized}`);
-		log(`Fullscreen: ${fullscreen}`);
+	eventApi.listen('log', (event) => {
+		log(event.payload);
 	})
 </script>
